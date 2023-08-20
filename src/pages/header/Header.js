@@ -1,23 +1,31 @@
 import React from "react";
-import { styled } from "styled-components";
-import Article from "./Article";
-import Nav from "./Nav";
+import {styled} from "styled-components";
 import {flexBetween, positionFixed} from "../../styles/mixin";
+import NavMenu from "./NavMenu";
 
 const Header = () => {
   return (
     <HeaderMainGrid>
 
       <HeaderInner>
-         <HeaderLogo>
-           <H1>
-             <Anchor><Em>React.js</Em></Anchor>
-           </H1>
-         </HeaderLogo>
+        <HeaderLogo>
+          <H1>
+            <Anchor>
+              <Em>
+                React.js
+              </Em>
+            </Anchor>
+          </H1>
+        </HeaderLogo>
+
+        <Navigation role="navigation" aria-label="메인메뉴">
+          <Ul>
+            <NavMenu/>
+          </Ul>
+        </Navigation>
       </HeaderInner>
 
-      <Nav>Nav</Nav>
-      <Article>Art</Article>
+
     </HeaderMainGrid>
   );
 };
@@ -30,7 +38,7 @@ const HeaderMainGrid = styled.header`
 `
 
 const HeaderInner = styled.div`
-  background-color: rgba(116,99,99,0.1);
+  background-color: rgba(116, 99, 99, 0.1);
   backdrop-filter: blur(15px);
   padding: 1rem;
   ${flexBetween}
@@ -47,7 +55,7 @@ const H1 = styled.h1`
 `
 
 const Anchor = styled.a.attrs({
-  href : "/"
+  href: "/"
 })`
   color: var(--black);
   text-decoration: none;
@@ -58,3 +66,28 @@ const Em = styled.em`
   display: block;
   color: var(--black200);
 `
+
+const Navigation = styled.nav`
+  @media (max-width: 800px) {
+    display: none;
+  }
+
+  &.show {
+    display: block;
+  }
+`
+
+const Ul = styled.ul`
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 68px;
+  background-color: rgba(116, 99, 99, 0.1);
+  backdrop-filter: blur(15px);
+  z-index: 10000;
+  min-width: 150px;
+  padding: 20px 0;
+`
+
+
+
