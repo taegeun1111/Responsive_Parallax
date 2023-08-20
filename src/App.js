@@ -13,13 +13,8 @@ function App() {
       <Header/>
       <Main/>
       <Footer/>
-      <TESET>fawrl;kfarw</TESET>
     </>
   );
 }
 
 export default App;
-
-const TESET = styled.nav`
-  font-family: 'Oswald',sans-serif;
-`
