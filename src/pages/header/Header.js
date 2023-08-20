@@ -5,14 +5,26 @@ import Nav from "./Nav";
 
 const Header = () => {
   return (
-    <>
-      <Title>타이틀</Title>
+    <HeaderGrid>
+
+      <HeaderMenu>
+          <Anchor>Blog</Anchor>
+          <Anchor>Github</Anchor>
+          <Anchor>WebStandard</Anchor>
+      </HeaderMenu>
+
       <Nav>Nav</Nav>
       <Article>Art</Article>
-    </>
+    </HeaderGrid>
   );
 };
 
 export default Header;
 
-const Title = styled.h1``;
+const HeaderGrid = styled.header`
+`
+
+const HeaderMenu = styled.div``;
+
+const Anchor = styled.a`
+`
