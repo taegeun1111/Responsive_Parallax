@@ -15,13 +15,37 @@ const NavMenu = () => {
 export default NavMenu;
 
 const Li = styled.li`
-  display: block;
-  text-align: right;
+  @media (max-width: 800px) {
+    display: block;
+    text-align: right;
+  }
+  display: inline;
 `
 
 const Anchor = styled.a`
-  display: inline-block;
-  padding: 10px;
+  @media (max-width: 800px) {
+    display: inline-block;
+    padding: 10px;
+  }
   text-decoration: none;
   color: var(--black);
+  text-transform: uppercase;
+  font-size: 14px;
+  position: relative;
+  padding: 14px;
+
+  &::before {
+    content: '';
+    width: calc(100% - 28px);
+    height: 1px;
+    background-color: var(--black);
+    position: absolute;
+    left: 14px;
+    bottom: 10px;
+    transform: scaleX(0);
+    transition: all 0.3s;
+  }
+  &:hover::before {
+    transform: scaleX(1);
+  }
 `

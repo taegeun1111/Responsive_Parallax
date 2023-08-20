@@ -1,9 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import {styled} from "styled-components";
 import {flexBetween, positionFixed} from "../../styles/mixin";
 import NavMenu from "./NavMenu";
 
 const Header = () => {
+  const [show, setShow] = useState(false);
+
+  const toggleMenu = () => {
+    setShow((prevShow) => !prevShow);
+  }
   return (
     <HeaderMainGrid>
 
@@ -11,6 +16,7 @@ const Header = () => {
         <HeaderLogo>
           <H1>
             <Anchor>
+              portfolio
               <Em>
                 React.js
               </Em>
@@ -18,14 +24,27 @@ const Header = () => {
           </H1>
         </HeaderLogo>
 
-        <Navigation role="navigation" aria-label="메인메뉴">
+        <Navigation
+          role="navigation"
+          aria-label="메인메뉴"
+          className={show ? "show" : ""}
+        >
           <Ul>
             <NavMenu/>
           </Ul>
         </Navigation>
+
+
+        <HeaderNavMobile
+          aria-controls="primary-menu"
+          aria-expanded={show ? "true" : "false"}
+          role="button"
+          tabIndex="0"
+          onClick={toggleMenu}
+        >
+          <Span show={show}></Span>
+        </HeaderNavMobile>
       </HeaderInner>
-
-
     </HeaderMainGrid>
   );
 };
@@ -52,6 +71,7 @@ const HeaderLogo = styled.div`
 `
 
 const H1 = styled.h1`
+  font-size: 1.6rem;
 `
 
 const Anchor = styled.a.attrs({
@@ -70,24 +90,85 @@ const Em = styled.em`
 const Navigation = styled.nav`
   @media (max-width: 800px) {
     display: none;
-  }
 
-  &.show {
-    display: block;
+    &.show {
+      display: block;
+    }
+
   }
 `
 
 const Ul = styled.ul`
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 68px;
-  background-color: rgba(116, 99, 99, 0.1);
-  backdrop-filter: blur(15px);
-  z-index: 10000;
-  min-width: 150px;
-  padding: 20px 0;
+  @media (max-width: 800px) {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 72px;
+    background-color: rgba(116, 99, 99, 0.1);
+    backdrop-filter: blur(15px);
+    z-index: 10000;
+    min-width: 150px;
+    padding: 20px 0;
+  }
+
 `
+
+const HeaderNavMobile = styled.div`
+  display: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  @media (max-width: 800px) {
+    display: block;
+  }
+`
+
+const Span = styled.span`
+  display: block;
+  width: 40px;
+  height: 2px;
+  background-color: var(--black);
+  margin-top: 19px;
+  position: relative;
+
+  &::before {
+    content: "";
+    width: 40px;
+    height: 2px;
+    background-color: var(--black);
+    position: absolute;
+    right: 0;
+    top: 6px;
+    transition: width 0.3s;
+  }
+
+  &::after {
+    content: "";
+    width: 40px;
+    height: 2px;
+    background-color: var(--black);
+    position: absolute;
+    left: 0;
+    bottom: 6px;
+    transition: width 0.3s;
+  }
+
+  @media (max-width: 800px) {
+    ${props =>
+            props.show &&
+            `
+      &::before {
+        width: 20px;
+      }
+
+      &::after {
+        width: 20px;
+      }
+    `}
+  }
+`
+
+
 
 
 
