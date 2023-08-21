@@ -37,12 +37,12 @@ const Header = () => {
 
         <HeaderNavMobile
           aria-controls="primary-menu"
-          aria-expanded={show ? "true" : "false"}
+          aria-expanded={show.toString()}
           role="button"
           tabIndex="0"
           onClick={toggleMenu}
         >
-          <Span show={show}></Span>
+          <Span show={show.toString()}></Span>
         </HeaderNavMobile>
       </HeaderInner>
     </HeaderMainGrid>
@@ -155,7 +155,7 @@ const Span = styled.span`
 
   @media (max-width: 800px) {
     ${props =>
-            props.show &&
+            props.show === "true" &&
             `
       &::before {
         width: 20px;

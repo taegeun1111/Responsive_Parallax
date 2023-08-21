@@ -1,5 +1,5 @@
 import React from 'react';
-import {headerNav} from "../../model/headerNavData";
+import {headerNav} from "../../model/data";
 import styled from "styled-components";
 
 const NavMenu = () => {
