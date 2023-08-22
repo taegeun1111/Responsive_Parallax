@@ -3,12 +3,14 @@ import { styled } from 'styled-components';
 import Intro from "./intro/Intro";
 import IntroText from "./intro/IntroText";
 import Skill from "./skill/Skill";
+import Site from "./site/Site";
 
 const Main = () => {
     return (
         <MainGrid>
           <Intro />
           <Skill />
+          <Site />
         </MainGrid>
     );
 };
