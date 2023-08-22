@@ -2,11 +2,13 @@ import React from 'react';
 import { styled } from 'styled-components';
 import Intro from "./intro/Intro";
 import IntroText from "./intro/IntroText";
+import Skill from "./skill/Skill";
 
 const Main = () => {
     return (
         <MainGrid>
           <Intro />
+          <Skill />
         </MainGrid>
     );
 };

@@ -11,7 +11,7 @@ const IntroText = () => {
         <div>{introText.desc[2]}</div>
       </Text>
       <Img>
-        <MainImg src={about}/>
+        <MainImg src={about} alt={"About ME"}/>
       </Img>
     </IntroTextGrid>
   );
